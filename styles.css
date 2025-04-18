@@ -1,0 +1,220 @@
+:root {
+    --primary-color: #264d3b;
+    --secondary-color: #9b2c2c;
+    --light-color: #f5ebd8;
+    --accent-color: #4a8b5b;
+    --text-color: #1f1f1f;
+    --bg-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #55a86f;
+        --secondary-color: #f08080;
+        --light-color: #1a1a1a;
+        --accent-color: #507c66;
+        --text-color: #f0f0f0;
+        --bg-color: #121212;
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    background-color: var(--primary-color);
+    color: white;
+    margin-bottom: 30px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: headerPop 1s ease-out;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+h1::before {
+    content: "✊";
+    display: inline-block;
+    animation: fistBounce 2s infinite;
+}
+
+@keyframes fistBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes headerPop {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+h2 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-top: 30px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+}
+
+.slogan {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.card {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.oui-non-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.oui-non-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 5px solid;
+    font-size: 1.1rem;
+}
+
+.oui {
+    border-left-color: var(--accent-color);
+    background-color: rgba(74, 139, 91, 0.1);
+}
+
+.non {
+    border-left-color: var(--secondary-color);
+    background-color: rgba(155, 44, 44, 0.1);
+}
+
+.eco-facts {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+    transition: background-color 0.3s;
+}
+
+.eco-facts h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.tip {
+    background-color: var(--light-color);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tip h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    margin-top: 40px;
+    border-radius: 20px 20px 0 0;
+}
+
+.highlight {
+    font-weight: bold;
+    color: var(--accent-color);
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--accent-color);
+    animation: underlineSlide 2s infinite ease-in-out;
+}
+
+@keyframes underlineSlide {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+.call-to-action {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card, .eco-facts, .call-to-action {
+        padding: 15px;
+    }
+
+    .tips {
+        grid-template-columns: 1fr;
+    }
+}
